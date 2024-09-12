@@ -174,10 +174,11 @@ class AwareSpectrogram(torch.utils.data.Dataset):
         
         self.data = dataset_raw.data
         
-        if target_classes != None:
+        if target_classes is not None:
             idx = False
             for i in range(len(target_classes)):
                 idx |= (self.data['Participant:']==target_classes[i])
+            # Filter out NA data entries
             if self.output_spiro_raw:
                 for col in COLUMNS_SPIROMETRY_RAW:
                     idx &= (~self.data[col].isna())
@@ -289,7 +290,7 @@ class AwareSpectrogram(torch.utils.data.Dataset):
         if self.output_disease_label:
             self.class_weights = compute_class_weight(
                 'balanced', 
-                classes=target_classes, 
+                classes=np.array(target_classes), 
                 y=self.data['Participant:']
             )
         elif self.output_inhale_exhale:
