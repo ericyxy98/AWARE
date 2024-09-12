@@ -1,0 +1,16 @@
+captum
+grad-cam
+graphviz
+matplotlib
+numpy
+opencv-python
+pandas
+peft
+scikit-learn
+scipy
+seaborn
+torch
+torchview
+torchvision
+tqdm
+transformers
