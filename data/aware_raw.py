@@ -73,7 +73,7 @@ class AwareRaw(torch.utils.data.Dataset):
                 cali2 = cali2[1:round(5.5*SAMPLE_RATE)]
                 
                 peak = np.argmax(cali1)
-                x_ref = cali1[peak-round(0.01*SAMPLE_RATE):peak+round(0.09*SAMPLE_RATE)]
+                x_ref = cali1[peak-round(0.05*SAMPLE_RATE):peak+round(0.15*SAMPLE_RATE)]
                 
                 for k, col in enumerate(row[2:7]):
                     if col==None:
